@@ -1,0 +1,195 @@
+baseline:
+  dst_w: 960
+  dst_h: 540
+  order:
+    - preprocessor
+    - mask
+    - recover
+  preprocessor:
+    fov: 90
+    dist_min: 2
+    dist_max: 130
+    filter_below_ground: -2.4
+    ground_threshold: 0.2
+  mask:
+    threshold: 1
+    layer_len: 1
+    mask_size: 9
+    base_decay: 0
+    power: 1
+    temperatures: 0
+    max_cover_dist: 150
+    max_deocc_dist: 40
+  column:
+    old: True
+    search_length: 30
+    threshold_drop: 2
+    cover_radius: 3
+    search_radius: 5
+    threshold_depth: 3
+    threshold_depth_find_again: 5
+    threshold_depth_filter: 1
+    filter_method: 0
+  recover:
+    max_iter: 20
+    max_size: 13
+    base_threshold: 2
+    min_size: 3
+    recover_pow: 1
+    scale: 1
+    norm: 60
+ 
+
+single_v3_mcrdr:
+  dst_w: 960
+  dst_h: 540
+  order:
+    - preprocessor
+    - mask
+    - column
+    - recover
+    - denoise
+    - recover
+  preprocessor:
+    fov: 90
+    dist_min: 2
+    dist_max: 130
+    filter_below_ground: -3
+    ground_threshold: 0.2
+  mask:
+    threshold: 0
+    layer_len: 0.5
+    mask_size: 9
+    base_decay: 0
+    power: 2
+    temperatures: 90
+    max_cover_dist: 150
+    max_deocc_dist: 40
+  column:
+    search_length: 50
+    threshold_drop: 2
+    cover_radius: 4
+    cover_factor: 2
+    search_radius: 5
+    threshold_depth: 3
+    threshold_depth_find_again: 5
+    threshold_depth_filter: 1
+    filter_method: 0
+    max_filter_dist: 40
+  recover:
+    max_iter: 150
+    max_size: 13
+    base_threshold: 0
+    min_size: 9
+    recover_pow: 1.5
+    scale: 16
+    norm: 60
+  denoise:
+    max_kernel_size: 11
+    min_kernel_size: 5
+    noise_threshold: 2
+    count_threshold: 2
+
+
+single_v4:  # add seg parsing
+  dst_w: 960
+  dst_h: 540
+  order:
+    - preprocessor
+    - mask
+    - recover
+    - denoise
+    - segparsing
+  preprocessor:
+    fov: 90
+    dist_min: 2
+    dist_max: 130
+    filter_below_ground: -3
+    ground_threshold: 0.2
+  mask:
+    threshold: 0
+    layer_len: 0.5
+    mask_size: 9
+    base_decay: 0
+    power: 2
+    temperatures: 90
+    max_cover_dist: 130
+    max_deocc_dist: 40
+  column:
+    search_length: 50
+    threshold_drop: 2
+    cover_radius: 4
+    cover_factor: 2
+    search_radius: 5
+    threshold_depth: 3
+    threshold_depth_find_again: 5
+    threshold_depth_filter: 1
+    filter_method: 0
+    max_filter_dist: 40
+  recover:
+    max_iter: 150
+    max_size: 13
+    base_threshold: 0
+    min_size: 9
+    recover_pow: 1.5
+    scale: 16
+    norm: 60
+  denoise:
+    max_kernel_size: 11
+    min_kernel_size: 5
+    noise_threshold: 2
+    count_threshold: 2
+  segparsing:
+    map_version: v0
+
+multi_baseline:
+  dst_w: 960
+  dst_h: 540
+  order:
+    - preprocessor
+    - mask
+    - denoise
+    - recover
+    - segparsing
+  preprocessor:
+    fov: 90
+    dist_min: 2
+    dist_max: 130
+    filter_below_ground: -2.4
+    ground_threshold: 0.2
+  mask:
+    threshold: 0
+    layer_len: 0.5
+    mask_size: 9
+    base_decay: 0
+    power: 2
+    temperatures: 130
+    max_cover_dist: 130
+    max_deocc_dist: 40
+  column:
+    search_length: 50
+    threshold_drop: 2
+    cover_radius: 4
+    cover_factor: 2
+    search_radius: 5
+    threshold_depth: 3
+    threshold_depth_find_again: 5
+    threshold_depth_filter: 1
+    filter_method: 0
+    max_filter_dist: 40
+  recover:
+    max_iter: 50
+    max_size: 13
+    base_threshold: 0
+    min_size: 9
+    recover_pow: 1.5
+    scale: 24
+    norm: 60
+    boundary_thickness: 7
+  denoise:
+    max_kernel_size: 11
+    min_kernel_size: 5
+    noise_threshold: 2
+    count_threshold: 2
+  segparsing:
+    map_version: v0
